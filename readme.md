@@ -6,7 +6,15 @@
 技术要求
 
  Laravel 5.2.15 版本
- PHP支持并大于5.3.5
+
+ PHP版本需求
+
+ PHP版本 >= 5.5.9
+ PHP扩展：OpenSSL
+ PHP扩展：PDO
+ PHP扩展：Mbstring
+ PHP扩展：Tokenizer
+ 
  PHP+MYSQL+Laravel框架开发的一套书店项目
 
 
