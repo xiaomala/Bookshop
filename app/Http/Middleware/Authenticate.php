@@ -17,13 +17,21 @@ class Authenticate
      */
     public function handle($request, Closure $next, $guard = null)
     {
-        if (Auth::guard($guard)->guest()) {
-            if ($request->ajax() || $request->wantsJson()) {
-                return response('Unauthorized.', 401);
-            } else {
-                return redirect()->guest('login');
-            }
+
+        $http_referer = $_SERVER['HTTP_REFERER'];
+
+        $member = $request->session()->get('member','');
+        if($member == ''){
+            return redirect()->guest('/login?return_url='. urlencode( $http_referer) );
         }
+
+//        if (Auth::guard($guard)->guest()) {
+//            if ($request->ajax() || $request->wantsJson()) {
+//                return response('Unauthorized.', 401);
+//            } else {
+//                return redirect()->guest('/login?return_url='. urlencode( $http_referer) );
+//            }
+//        }
 
         return $next($request);
     }

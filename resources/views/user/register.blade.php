@@ -188,7 +188,9 @@
   function onRegisterClick() {
 
     $('input:radio[name=register_type]').each(function(index, el) {
+
       if($(this).attr('checked') == 'checked') {
+
         var email = '';
         var phone = '';
         var password = '';

@@ -13,11 +13,11 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Category extends Model
+class Cart extends Model
 {
 
     //绑定数据库表名
-    protected $table = 'category';
+    protected $table = 'cart';
 
     //绑定数据库表主健
     protected $primaryKey = 'id';

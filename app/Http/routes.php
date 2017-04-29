@@ -116,13 +116,33 @@ Route::group(['middleware' => ['web']], function () {
     ]);
 
 
-    //购物车
+    //添加到购物车
     Route::get('cart/add/{product_id}', [
         'uses'  => 'service\CartController@addCart',
         'middleware' => ['guest'],
     ]);
 
 
+
+    //购物车结算
+    Route::get('cart', [
+        'uses'  => 'service\CartController@toCart',
+        'middleware' => ['auth'],
+    ]);
+
+
+    //将购物车的商品删除
+    Route::get('cart/delete', [
+        'uses'  => 'service\CartController@deleteCart',
+        'middleware' => ['auth'],
+    ]);
+
+
+    //结算中心
+    Route::get('order/order_pay', [
+        'uses'  => 'service\CartController@toOrderPay',
+        'middleware' => ['auth'],
+    ]);
 
 
 });

@@ -23,10 +23,10 @@ class MemberController extends Controller
     /**
      * 新用户登录
      */
-    public function getLogin()
+    public function getLogin(Request $request)
     {
-
-        return view('user/login');
+        $return_url = $request->input('return_url', '');
+        return view('user/login')->with('return_url', urldecode( $return_url ));
 
     }
 

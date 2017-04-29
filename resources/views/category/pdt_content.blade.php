@@ -38,7 +38,11 @@
     <div class="weui_cells_title">详细介绍</div>
     <div class="weui_cells">
         <div class="weui_cell">
-            {{ $pdt_content->content }}
+            @if( $pdt_content != null ){
+                {{ $pdt_content->content }}
+            @else
+
+            @endif
         </div>
     </div>
 
@@ -50,10 +54,9 @@
     </div>
 
     <div class="bk_half_area">
-        <button class="weui_btn weui_btn_default" onclick="_toCart();">查看购物车(<span id="cart_num" class="m3_price"></span> )</button>
+        <button class="weui_btn weui_btn_default" onclick="_toCart();">查看购物车(<span id="cart_num" class="m3_price">{{$count}}</span> )</button>
     </div>
 </div>
-
 @endsection
 
 @section('my-js')
@@ -77,12 +80,13 @@
 
     function _addCart(){
 
+        var product_id = "{{ $product->id }}";
+
         $.ajax({
-            type: "POST",
-            url: 'doLogin',
+            type: "GET",
+            url: '/cart/add/' + product_id,
             dataType: 'json',
             cache: false,
-            data: {username: username, password: password, validate_code: validate_code, _token: "{{csrf_token()}}"},
             success: function(data){
               if(data == null){
                 $('.bk_toptips').show();
@@ -97,13 +101,12 @@
                 return;
               }
 
-              $('.bk_toptips').show();
-              $('.bk_toptips span').html('登录成功');
-              setTimeout(function() {$('.bk_toptips').hide();}, 2000);
+              var num = $('#cart_num').html();
+              if( num == '' ) num = 0;
+              $('#cart_num').html(Number(num)+1);
 
-              location.href = '/cart';
             },
-            error: function(xhr, status, error) {
+            error: function(xhr, status, error){
               console.log(xhr);
               console.log(status);
               console.log(error);
