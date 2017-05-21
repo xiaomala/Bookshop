@@ -10,6 +10,7 @@ use Illuminate\http\Request;
 use App\Models\PdtContent;
 use App\Models\PdtImages;
 use App\Models\Product;
+use App\Models\Cart;
 use App\Http\Controllers\Controller;
 
 class CategoryController extends Controller
@@ -78,7 +79,7 @@ class CategoryController extends Controller
         $member = $request->session()->get('member', '');
         if($member != '') {
 
-            $cart_items = CartItem::where('member_id', $member->id)->get();
+            $cart_items = Cart::where('member_id', $member->id)->get();
 
             foreach ($cart_items as $cart_item) {
                 if($cart_item->product_id == $product_id) {

@@ -12,6 +12,8 @@ class VerifyCsrfToken extends BaseVerifier
      * @var array
      */
     protected $except = [
-        //
+
+        //设置不需要栏截的路径
+        '/pay/notify'
     ];
 }

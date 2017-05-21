@@ -139,10 +139,46 @@ Route::group(['middleware' => ['web']], function () {
 
 
     //结算中心
-    Route::get('order/order_pay', [
-        'uses'  => 'service\CartController@toOrderPay',
+    Route::get('order/order_commit/{product_id}', [
+        'uses'  => 'service\OrderController@orderCommit',
         'middleware' => ['auth'],
     ]);
 
+
+    //结算中心
+    Route::get('order/order_list', [
+        'uses'  => 'service\CartController@orderList',
+        'middleware' => ['auth'],
+    ]);
+
+
+
+    //结算中心
+    Route::get('/pay/index', [
+        'uses'  => 'service\PayController@index',
+        'middleware' => ['auth'],
+    ]);
+
+
+
+    //结算中心
+    Route::post('/pay/alipay', [
+        'uses'  => 'service\PayController@alipay',
+        'middleware' => ['auth'],
+    ]);
+
+
+    //结算中心
+    Route::get('/pay/notify', [
+        'uses'  => 'service\PayController@notify',
+        'middleware' => ['auth'],
+    ]);
+
+
+    //结算中心
+    Route::get('/pay/call_back', [
+        'uses'  => 'service\PayController@call_back',
+        'middleware' => ['auth'],
+    ]);
 
 });

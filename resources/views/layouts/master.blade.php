@@ -27,10 +27,10 @@
     <div class="weui_mask_transition" id="mask"></div>
     <div class="weui_actionsheet" id="weui_actionsheet">
         <div class="weui_actionsheet_menu">
-            <div class="weui_actionsheet_cell" onclick="onMenuItemClick(1)">用户中心</div>
-            <div class="weui_actionsheet_cell" onclick="onMenuItemClick(2)">选择套餐</div>
-            <div class="weui_actionsheet_cell" onclick="onMenuItemClick(3)">周边油站</div>
-            <div class="weui_actionsheet_cell" onclick="onMenuItemClick(4)">常见问题</div>
+            <div class="weui_actionsheet_cell" onclick="onMenuItemClick(1)">首页</div>
+            <div class="weui_actionsheet_cell" onclick="onMenuItemClick(2)">产品列表</div>
+            <div class="weui_actionsheet_cell" onclick="onMenuItemClick(3)">购物车</div>
+            <div class="weui_actionsheet_cell" onclick="onMenuItemClick(4)">我的订单</div>
         </div>
         <div class="weui_actionsheet_action">
             <div class="weui_actionsheet_cell" id="actionsheet_cancel">取消</div>
@@ -70,15 +70,15 @@ function onMenuItemClick(index) {
   var weuiActionsheet = $('#weui_actionsheet');
   hideActionSheet(weuiActionsheet, mask);
   if(index == 1) {
-
-  } else if(index == 2) {
-
-  } else if(index == 3){
-
-  } else {
     $('.bk_toptips').show();
     $('.bk_toptips span').html("敬请期待!");
     setTimeout(function() {$('.bk_toptips').hide();}, 2000);
+  } else if(index == 2) {
+    location.href = '/category/';
+  } else if(index == 3){
+    location.href = '/cart/';
+  } else {
+     location.href = '/order_list/';
   }
 }
 

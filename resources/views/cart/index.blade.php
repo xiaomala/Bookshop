@@ -123,12 +123,25 @@
 
     /**
      * 结算
-     * @private
      */
     function _toCharge(){
 
-        var order_pay = '';
-        location.href='/order_pay?car'
+        var product_ids_arr = [];
+
+        $('input:checkbox[name=cart_item]').each(function(index, el){
+            if($(this).attr('checked') == 'checked') {
+                product_ids_arr.push( $(this).attr('id') );
+            }
+        });
+
+        if( product_ids_arr.length == 0 ){
+            $('.bk_toptips').show();
+            $('.bk_toptips span').html('请选择提交项');
+            setTimeout(function(){ $('.bk_toptips').hide();}, 2000);
+            return;
+        }
+
+        location.href='/order/order_commit/' + product_ids_arr;
     }
 
 </script>
