@@ -14,6 +14,7 @@ class VerifyCsrfToken extends BaseVerifier
     protected $except = [
 
         //设置不需要栏截的路径
+        '/pay/index',
         '/pay/notify'
     ];
 }

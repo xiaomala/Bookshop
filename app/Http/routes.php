@@ -154,7 +154,7 @@ Route::group(['middleware' => ['web']], function () {
 
 
     //结算中心
-    Route::get('/pay/index', [
+    Route::get('pay/index', [
         'uses'  => 'service\PayController@index',
         'middleware' => ['auth'],
     ]);
@@ -162,23 +162,33 @@ Route::group(['middleware' => ['web']], function () {
 
 
     //结算中心
-    Route::post('/pay/alipay', [
+    Route::post('pay/alipay', [
         'uses'  => 'service\PayController@alipay',
         'middleware' => ['auth'],
     ]);
 
 
     //结算中心
-    Route::get('/pay/notify', [
+    Route::post('pay/notify', [
         'uses'  => 'service\PayController@notify',
         'middleware' => ['auth'],
     ]);
 
 
     //结算中心
-    Route::get('/pay/call_back', [
+    Route::get('pay/call_back', [
         'uses'  => 'service\PayController@call_back',
         'middleware' => ['auth'],
     ]);
+
+
+
+    //结算中心
+    Route::post('/pay/wxpay', [
+        'uses'  => 'service\PayController@wxpay',
+        'middleware' => ['auth'],
+    ]);
+
+
 
 });
