@@ -43,7 +43,7 @@
             <div class="weui_cell_bd weui_cell_primary">
                 <p>总计:</p>
             </div>
-            <div class="weui_cell_ft bk_price" style="font-size: 25px;">￥ {{$total_price}}</div>
+            <div class="weui_cell_ft bk_price" style="font-size: 25px;">￥{{$total_price}}</div>
         </div>
     </div>
   </div>

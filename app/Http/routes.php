@@ -139,8 +139,8 @@ Route::group(['middleware' => ['web']], function () {
 
 
     //结算中心
-    Route::get('order/order_commit/{product_id}', [
-        'uses'  => 'service\OrderController@orderCommit',
+    Route::post('order/order_commit', [
+        'uses'  => 'service\OrderController@order_commit',
         'middleware' => ['auth'],
     ]);
 

@@ -36,6 +36,11 @@
     </div>
 </div>
 
+<form action="order/order_commit" id="order_commit" method="post">
+    {{ csrf_field() }}
+    <input type="hide" name="product_ids" value="" />
+</form>
+
 <div class="bk_fix_bottom">
     <div class="bk_half_area">
         <button class="weui_btn weui_btn_primary" onclick="_toCharge();">结算</button>
@@ -141,7 +146,8 @@
             return;
         }
 
-        location.href='/order/order_commit/' + product_ids_arr;
+        $('input[name=product_ids]').val(product_ids_arr+'');
+        $('#order_commit').submit();
     }
 
 </script>

@@ -17,10 +17,12 @@ class OrderController extends Controller
 {
 
 
-    public function orderCommit(Request $request, $product_id)
+    public function order_commit( Request $request )
     {
 
-        $product_ids_arr = ( $product_id != '' ? explode(',', $product_id ) : array() );
+        $product_ids = $request->input('product_ids', '');
+
+        $product_ids_arr = ( $product_ids != '' ? explode(',', $product_ids ) : array() );
 
         //已登录
         $member = $request->session()->get('member', '');
@@ -102,7 +104,7 @@ class OrderController extends Controller
                 $cart_items = Product::find($order_item->product_id);
             }
         }
-        return $order;
+
         return view('order/order_list');
     }
 
